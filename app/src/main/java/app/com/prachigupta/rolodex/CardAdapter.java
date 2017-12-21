@@ -80,9 +80,9 @@ public class CardAdapter  extends RecyclerView.Adapter<CardAdapter.CardViewHolde
 
         source = "<b>Bio</b> :"+formatString(model.getBio());
         if (Build.VERSION.SDK_INT >= 24) {
-            holder.date.setText(Html.fromHtml(source,1)); // for 24 api and more
+            holder.bio.setText(Html.fromHtml(source,1)); // for 24 api and more
         } else {
-            holder.date.setText(Html.fromHtml(source)); // or for older api
+            holder.bio.setText(Html.fromHtml(source)); // or for older api
         }
 
 
