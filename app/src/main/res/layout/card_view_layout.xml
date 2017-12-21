@@ -10,59 +10,66 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/background">
-    <ImageView
-        android:layout_width="@dimen/image_width"
-        android:layout_height="@dimen/image_height"
-        android:scaleType="center"
-        android:id="@+id/avatar"
-        android:layout_centerHorizontal="true"
-        android:layout_alignParentTop="true"
-        android:contentDescription="@string/unable"/>
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/avatar"
         android:id="@+id/first"
         android:textColor="@color/text"
-        android:textSize="@dimen/text_size"/>
+        android:textSize="@dimen/text_size"
+        android:padding="@dimen/padding"
+        android:layout_alignParentTop="true"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/first"
         android:id="@+id/last"
         android:textColor="@color/text"
-        android:textSize="@dimen/text_size"/>
+        android:textSize="@dimen/text_size"
+        android:padding="@dimen/padding"/>
+            <ImageView
+                android:layout_width="@dimen/image_width"
+                android:layout_height="@dimen/image_height"
+                android:id="@+id/avatar"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentRight="true"
+                android:contentDescription="@string/unable"
+                android:padding="@dimen/padding"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/last"
+        android:layout_below="@id/avatar"
         android:id="@+id/email"
         android:textColor="@color/text"
-        android:textSize="@dimen/text_size"/>
+        android:textSize="@dimen/text_size"
+        android:padding="@dimen/padding"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/email"
         android:id="@+id/company"
         android:textColor="@color/text"
-        android:textSize="@dimen/text_size"/>
+        android:textSize="@dimen/text_size"
+        android:padding="@dimen/padding"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/company"
         android:id="@+id/date"
         android:textColor="@color/text"
-        android:textSize="@dimen/text_size"/>
+        android:textSize="@dimen/text_size"
+        android:padding="@dimen/padding"/>
 
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/date"
         android:id="@+id/bio"
         android:scrollbars="vertical"
         android:maxLines="100"
         android:textColor="@color/text"
-        android:textSize="@dimen/text_size"/>
+        android:textSize="@dimen/bio_text_size"
+        android:padding="@dimen/padding"/>
         </RelativeLayout>
     </android.support.v7.widget.CardView>
 

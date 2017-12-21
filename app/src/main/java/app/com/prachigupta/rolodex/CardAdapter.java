@@ -2,8 +2,10 @@ package app.com.prachigupta.rolodex;
 
 
 import android.content.Context;
+import android.os.Build;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -40,12 +42,49 @@ public class CardAdapter  extends RecyclerView.Adapter<CardAdapter.CardViewHolde
 
         CardModel model = cardModels.get(position);
 
-        holder.first.setText("First Name :"+model.getFirstName());
-        holder.last.setText("Last Name :"+model.getLastName());
-        holder.email.setText("Email :"+model.getEmail());
-        holder.company.setText("Company :"+model.getCompany());
-        holder.date.setText("Start Date :"+model.getStartDate());
-        holder.bio.setText("Bio :"+model.getBio());
+        String source = "<b>First Name</b> :"+model.getFirstName();
+        if (Build.VERSION.SDK_INT >= 24) {
+            holder.first.setText(Html.fromHtml(source,1)); // for 24 api and more
+        } else {
+            holder.first.setText(Html.fromHtml(source)); // or for older api
+        }
+
+        source = "<b>Last Name</b> :"+model.getLastName();
+        if (Build.VERSION.SDK_INT >= 24) {
+            holder.last.setText(Html.fromHtml(source,1)); // for 24 api and more
+        } else {
+            holder.last.setText(Html.fromHtml(source)); // or for older api
+        }
+
+
+        source = "<b>Email</b> :"+model.getEmail();
+        if (Build.VERSION.SDK_INT >= 24) {
+            holder.email.setText(Html.fromHtml(source,1)); // for 24 api and more
+        } else {
+            holder.email.setText(Html.fromHtml(source)); // or for older api
+        }
+
+        source = "<b>Company</b> :"+model.getCompany();
+        if (Build.VERSION.SDK_INT >= 24) {
+            holder.company.setText(Html.fromHtml(source,1)); // for 24 api and more
+        } else {
+            holder.company.setText(Html.fromHtml(source)); // or for older api
+        }
+
+        source = "<b>Start Date </b> :"+model.getStartDate();
+        if (Build.VERSION.SDK_INT >= 24) {
+            holder.date.setText(Html.fromHtml(source,1)); // for 24 api and more
+        } else {
+            holder.date.setText(Html.fromHtml(source)); // or for older api
+        }
+
+        source = "<b>Bio</b> :"+formatString(model.getBio());
+        if (Build.VERSION.SDK_INT >= 24) {
+            holder.date.setText(Html.fromHtml(source,1)); // for 24 api and more
+        } else {
+            holder.date.setText(Html.fromHtml(source)); // or for older api
+        }
+
 
         String avatar = model.getAvatar();
 
@@ -80,5 +119,75 @@ public class CardAdapter  extends RecyclerView.Adapter<CardAdapter.CardViewHolde
             avatar = (ImageView)itemView.findViewById(R.id.avatar);
 
         }
+    }
+
+    private String formatString(String s) {
+
+
+
+        boolean boldFlag = true;
+
+        boolean italicsFlg = true;
+
+        char[] stringArray = s.toCharArray();
+
+        StringBuilder builder = new StringBuilder();
+
+        for (int i = 0; i < stringArray.length; i++) {
+
+
+
+            if(stringArray[i] == '*'){
+
+                if(boldFlag){
+
+                    builder.append("<b>");
+
+
+
+                }
+
+                else{
+
+                    builder.append("</b>");
+
+                }
+
+                boldFlag = !boldFlag;
+
+            }
+
+
+
+            else if(stringArray[i] == '_'){
+
+                if(italicsFlg){
+
+                    builder.append("<i>");
+
+
+
+                }
+
+                else{
+
+                    builder.append("</i>");
+
+                }
+
+                italicsFlg = !italicsFlg;
+
+            }
+
+            else{
+
+                builder.append(stringArray[i]);
+
+            }
+
+        }
+
+        return builder.toString();
+
     }
 }
