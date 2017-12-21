@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Rolodex</string>
+    <string name="unable">Unable To Load</string>
 </resources>
